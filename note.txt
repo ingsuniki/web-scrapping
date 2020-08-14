@@ -1,0 +1,851 @@
+   {% comment %} headless driver on selenium {% endcomment %}
+https://blog.softhints.com/python-headless/
+{% comment %} purge data un installed {% endcomment %}
+https://phoenixnap.com/kb/fix-sub-process-usr-bin-dpkg-returned-error-code-1
+sudo apt-get remove ––purge name_package
+
+ python2.7-minimal
+ python-minimal
+ 
+ python2.7
+ python
+ python-opengl
+ python-pil:amd64
+ python-pip
+ python-pkg-resources
+ python2.7-dev
+ python-dev
+ python-pyrex
+ python-pyside.qtcore
+ python-sip
+ python-wheel
+
+
+{% comment %} Activate Python  {% endcomment %}
+state activate ingsuniki/ActivePython-3.7
+{% comment %} run code  {% endcomment %}
+(crawlers) [ingsuniki/ActivePython-3.7] root@support:/home/support/Apps/crawlers/online-media-crawler-py/scrapyPortal/scrapyPortal#
+- https://www.linuxid.net/25007/tutorial-install-python-3-7-di-ubuntu-18-04/
+- https://www.linuxquestions.org/questions/ubuntu-63/could-not-exec-dpkg-e-sub-process-usr-bin-dpkg-returned-an-error-code-100-a-4175623237/
+- python3.7 -m pip install --upgrade pip
+{% comment %} untuk run sceduler scrapy spiders {% endcomment %}
+- 15 16 * * * cd /home/support/Apps/crawlers/online-media-crawler-py/scrapyPortal/scrapyPortal && /usr/local/bin/scrapy crawl antaranewsAceh
+{% comment %} Install Python  {% endcomment %}
+https://platform.activestate.com/ingsuniki/ActivePython-3.7/releases
+{% comment %} make cron log {% endcomment %}
+https://askubuntu.com/questions/56683/where-is-the-cron-crontab-log
+{% comment %} repo {% endcomment %}
+git config --global user.name "Rizki Nur Barokah"
+git config --global user.email "rizki.barokah@datanusantara.com"
+
+Create a new repository
+git clone https://repo.datanusantara.com/rizkibarokah/online-media-crawler-py.git
+cd online-media-crawler-py
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Push an existing folder
+cd existing_folder
+git init
+git remote add origin https://repo.datanusantara.com/rizkibarokah/online-media-crawler-py.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Push an existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin https://repo.datanusantara.com/rizkibarokah/online-media-crawler-py.git
+git push -u origin --all
+git push -u origin --tags
+{% comment %} Code / RECODE {% endcomment %}
+- link tutorial on youtube
+{% comment %} ceck out data lama commit file {% endcomment %}
+ - git checkout -- <file>
+ - git checkout -b code_hash
+ {% comment %} googlebot user agent {% endcomment %}
+ - cek tipe browser for scrapy 
+{% comment %} run multiple file spider {% endcomment %}
+ - https://stackoverflow.com/questions/36109400/run-multiple-spider-sequentially
+ - https://docs.scrapy.org/en/latest/topics/practices.html 
+{% comment %} Instalasi  {% endcomment %}
+
+{% comment %} yield Statement {% endcomment %}
+While a return statement terminates a function entirely, yield just pauses the function until it is called again by the next() method.
+
+{% comment %} Menjalankan  {% endcomment %}
+c
+- www.amazon.com/robots.txt => for check the structure from web url 
+- installing python
+- installing PyCharm
+- pip install pipenv
+- create a virtual environment : virtualenv .
+- Activate the virtual Environment 
+     + Windows : .\Scripts\activate
+     + mac : ./bin/activate
+     + Linux  : source ./bin/activate
+- installing scrapy
+     + pip install scrapy
+     + scrapy startproject name_projeck
+     + cd name_project
+- pip freeze => for check installing the package 
+- create file quote_spyder.py
+- scrapy genspider amazon_spyder amazon.com 
+- scrapy crawl quotes => for run file
+- error win32api
+     + installing them 
+     + pip install pipwin32api 
+     + scrapy shell "http://quotes.toscrape.com/" => for check response the file 
+- scrapy crawl nama_file -L WARN => for run file 
+- conversi data before save to database / another files
+     + setup on items.py
+     + class QuotetutorialItem(scrapy.Item):
+          title = scrapy.Field()
+          author = scrapy.Field()
+          tags = scrapy.Field()
+     + check tutorial on Python Scrapy Tutorial - 12 
+
+- store into csv, json / xml file
+     + scrapy crawl scrapy_name -o name_file.kind
+     + scrapy crawl quotes -o quotes_items.json
+
+- Make Pipeline
+     + Pipeline.py
+     + setting.py
+          > uncomment 
+          ITEM_PIPELINES = {
+          'quotetutorial.pipelines.QuotetutorialPipeline': 300,
+          }
+
+- Store on sqlite3
+     + create file database.py +> remove this ga guna
+     + https://sqliteonline.com/
+     + Setup pipelines.py before store data into database 
+
+- Store on mongodb
+     + pip install pymongo
+     + https://sqliteonline.com/
+     + Setup pipelines.py before store data into database 
+
+{% comment %} Make Parameter on py {% endcomment %}
+- scrapy crawl myspider -a parameter1=value1 -a parameter2=value2
+- class MySpider(Spider):
+    name = 'myspider'
+    ...
+    def parse(self, response):
+        ...
+        if self.parameter1 == value1:
+            # this is True
+
+        # or also
+        if getattr(self, parameter2) == value2:
+            # this is also True
+
+
+
+
+            try:
+                os.mkdir(PATH_LOG)  
+                with open( PATH_LOG + '.log', 'w') as log_file:
+                    json.dump(isi_file, log_file)
+            except Exception : 
+                with open(PATH_LOG + '.log', 'w') as log_file:
+                    json.dump(isi_file, log_file)
+    
+
+
+
+{% comment %} From Logger File {% endcomment %}
+# import logging
+
+# ===========================================
+# logging.debug('This is a debug message')
+# logging.info('This is an info message')
+# logging.warning('This is a warning message')
+# logging.error('This is an error message')
+# logging.critical('This is a critical message')
+# # WARNING:root:This is a warning message
+# # ERROR:root:This is an error message
+# # CRITICAL:root:This is a critical message
+# ===========================================
+
+# ===========================================
+# logger = logging.getLogger('dev')
+# logger.setLevel(logging.DEBUG)
+# logger.debug('This is a debug message')
+# logger.info('This is an info message')
+# logger.warning('This is a warning message')
+# logger.error('This is an error message')
+# logger.critical('This is a critical message')
+# # This is a warning message
+# # This is an error message
+# # This is a critical message
+# ===========================================
+
+# ===========================================
+# main_logger = logging.getLogger('main')
+# main_logger.setLevel(5)
+# dev_logger = logging.getLogger('main.dev')
+# print(main_logger.getEffectiveLevel())
+# print(dev_logger.getEffectiveLevel())
+# 5 => hasil
+# ===========================================
+
+# ===========================================
+# Logger Handler = and save data to log.test
+# ===========================================
+# logger = logging.getLogger('dev')
+# logger.setLevel(logging.INFO)
+# fileHandler = logging.FileHandler('test.log')
+# fileHandler.setLevel(logging.INFO)
+# consoleHandler = logging.StreamHandler()
+# consoleHandler.setLevel(logging.INFO)
+# logger.addHandler(fileHandler)
+# logger.addHandler(consoleHandler)
+# logger.info('information message')
+# information message
+# ===========================================
+
+# ===========================================
+# Logger with date 
+# ===========================================
+# logger = logging.getLogger('dev')
+# logger.setLevel(logging.INFO)
+
+# consoleHandler = logging.StreamHandler()
+# consoleHandler.setLevel(logging.INFO)
+
+# logger.addHandler(consoleHandler)
+
+# formatter = logging.Formatter('%(asctime)s  %(name)s  %(levelname)s: %(message)s')
+# consoleHandler.setFormatter(formatter)
+
+# logger.info('information message')
+# # 2020-07-09 09:08:16,394  dev  INFO: information message = hasil
+# ===========================================
+# Logging basic_config.copy()
+# ===========================================
+# logging.basicConfig(filename='test.log', format='%(filename)s: %(message)s',
+#                     level=logging.DEBUG)
+
+# logging.debug('This is a debug message')
+# logging.info('This is an info message')
+# logging.warning('This is a warning message')
+# logging.error('This is an error message')
+# logging.critical('This is a critical message')
+# ===========================================
+# ==========================================================
+# pip install python-json-logger = > with json logger
+# ==========================================================
+# import logging
+# from pythonjsonlogger import jsonlogger
+
+# logger = logging.getLogger()
+
+# logHandler = logging.StreamHandler()
+# formatter = jsonlogger.JsonFormatter()
+# logHandler.setFormatter(formatter)
+# logger.addHandler(logHandler)
+# ==========================================================
+# lowermodule.py
+# import logging.config
+# import traceback
+# import time
+
+# def word_count(myfile):
+#     logger = logging.getLogger(__name__)
+#     logging.fileConfig('logging.ini', disable_existing_loggers=False)
+#     try:
+#         starttime = time.time()
+#         with open(myfile, 'r') as f:
+#             file_data = f.read()
+#             words = file_data.split(" ")
+#             final_word_count = len(words)
+#             endtime = time.time()
+#             duration = endtime - starttime 
+#             logger.info("this file has %d words", final_word_count, extra={"run_duration":duration})
+#             return final_word_count
+#     except OSError as e:
+#         [...]
+
+# ==========================================================
+# import logging
+# import os
+ 
+# class OneLineExceptionFormatter(logging.Formatter):
+#     def formatException(self, exc_info):
+#         result = super().formatException(exc_info)
+#         return repr(result)
+ 
+#     def format(self, record):
+#         result = super().format(record)
+#         if record.exc_text:
+#             result = result.replace("\n", "")
+#         return result
+ 
+# handler = logging.StreamHandler()
+# formatter = OneLineExceptionFormatter(logging.BASIC_FORMAT)
+# handler.setFormatter(formatter)
+# root = logging.getLogger()
+# root.setLevel(os.environ.get("LOGLEVEL", "INFO"))
+# root.addHandler(handler)
+ 
+# try:
+#     exit()
+# except Exception:
+#     logging.exception("Exception in main(): ")
+#     exit(1)
+# ==========================================================
+# import logging
+
+# logging.basicConfig(level=logging.DEBUG,
+#                     format='%(asctime)s %(levelname)-8s %(message)s',
+#                     datefmt='%a, %d %b %Y %H:%M:%S',
+#                     filename='/temp/myapp.log',
+#                     filemode='w')
+# logging.debug('A debug message')
+# logging.info('Some information')
+# logging.warning('A shot across the bows')
+# ==========================================================
+# 
+
+# ==========================================================
+# make or create directory 
+# ==========================================================
+# Python program to explain os.mkdir() method  
+    
+# # importing os module  
+# import os 
+# # Directory 
+# directory = "GeeksForGeeks"
+# parent_dir = "../"
+  
+# # Path 
+# path = os.path.join(parent_dir, directory) 
+# os.mkdir(path) 
+# print("Directory '%s' created" %directory) 
+# # ==========================================================
+# import os
+
+# dirname = 'create'
+
+# try:
+#     os.makedirs(dirname)
+# except OSError:
+#     if os.path.exists(dirname):
+#         # We are nearly safe
+#         pass
+#     else:
+#         # There was an error on creation, so make sure we know about it
+#         raise
+# ==========================================================
+# Definition and Usage
+# The raise keyword is used to raise an exception.
+# You can define what kind of error to raise, and the text to print to the user.
+# ==========================================================
+# x = -1
+# if x < 0:
+#   raise Exception("Sorry, no numbers below zero")
+# ==========================================================
+# x = "hello"
+
+# if not type(x) is int:
+#   raise TypeError("Only integers are allowed")
+# ==========================================================
+# import sys
+ 
+# stdout_fileno = sys.stdout
+# stderr_fileno = sys.stderr
+ 
+# sample_input = ['Hi', 'Hello from AskPython', 'exit']
+# for ip in sample_input:
+#     # Prints to stdout
+#     stdout_fileno.write(ip + '\n')
+#     # Tries to add an Integer with string. Raises an exception
+#     try:
+#         ip = ip + 100
+#     # Catch all exceptions
+#     except:
+#         stderr_fileno.write('Exception Occurred!\n')
+# ==========================================================
+# make or create directory 
+# ==========================================================
+# Python program to explain os.mkdir() method  
+    
+# # importing os module  
+# import os 
+# # Directory 
+# try:
+#      # directory = "GeeksForGeeks"
+#      # parent_dir = "../"  
+#      # # Path 
+#      # path = os.path.join(parent_dir, directory) 
+#      path = "../Ayam_Bakar/"
+#      os.mkdir(path) 
+#      # print("Directory '%s' created" %directory) 
+# except Exception as e:
+#       print(e)
+#       print("emang error")
+# ==========================================================
+# ==========================================================
+# save data into file .log / json file
+# ==========================================================
+# import json
+# ayam = 10
+# bakar = "mengering"
+# my_details = {
+#     'name': 'John Doe',
+#     'age': 29,
+#     'hanya':ayam,
+#     'saja':bakar
+# }
+
+# with open('personal.log', 'w') as json_file:
+#     json.dump(my_details, json_file)
+# ==========================================================
+# import os
+# import errno
+# try:
+#     os.makedirs('my_folder')
+# except OSError as e:
+#     if e.errno != errno.EEXIST:
+#         raise
+# ==========================================================
+# importing os module  
+# import os 
+# import json
+
+# ada = 10
+# mengering = "mengering"
+
+# isi_file = "hanya saja " + str(ada) + "Orng \n\n Telah Membuat Air Sungai" + mengering 
+
+# path = "../Ayam_Bakar/"
+# try:
+#      os.mkdir(path)  
+#      with open( path + 'personal.log', 'w') as json_file:
+#           json.dump(isi_file, json_file)
+# except Exception as e:
+#      # os.mkdir(path)  
+#      with open(path + 'premium.log', 'w') as json_file:
+#           json.dump(isi_file, json_file)
+#      # print(e)
+{% comment %} end Logger file {% endcomment %}
+
+{% comment %} From Boxer.py {% endcomment %}
+# ###########################################################
+# #
+# # Script to scrape boxer rankings from https://box.live/
+# #
+# #                           by
+# #
+# #                    Code Monkey King
+# #
+# ###########################################################
+
+# # packages
+# import scrapy
+# from scrapy.crawler import CrawlerProcess
+# from scrapy.selector import Selector
+# import json
+
+# # boxer rankings class
+# class BoxerRankings(scrapy.Spider):
+#     # scraper/spider name
+#     name = 'boxer_rankings'
+    
+#     # base URL
+#     base_url = 'https://box.live/boxing-rankings/'
+    
+#     # custom headers
+#     headers = {
+#         'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+#     }
+    
+#     # custom settings
+#     custom_settings = {
+#         # uncomment to slow down the crawling speed
+#         #'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+#         #'DOWNLOAD_DELAY': 1
+#     }
+    
+#     # crawlre's entry
+#     def start_requests(self):
+#         # make HTTP request to the base URL
+#         yield scrapy.Request(
+#             url=self.base_url,
+#             headers=self.headers,
+#             callback=self.parse_boxer
+#         )
+    
+#     # parse boxer data
+#     def parse_boxer(self, response):
+#         # boxer URLs
+#         boxer_urls = []
+        
+#         # extract champion URLs
+#         champion_urls = response.css('div[class="rank_full_mini"]')
+#         champion_urls = champion_urls.css('a[href*="boxer"]::attr(href)')
+#         champion_urls = champion_urls.getall()
+        
+#         # extract challanger URLs
+#         challenger_urls = response.css('div[class="rank_full_mini"]')
+#         challenger_urls = challenger_urls.css('ol').css('li')
+#         challenger_urls = challenger_urls.css('a::attr(href)')
+#         challenger_urls = challenger_urls.getall()
+        
+#         # loop over champion URLs
+#         for url in champion_urls:
+#             # append champions to list
+#             boxer_urls.append(url)
+        
+#         # loop over challenger URLs
+#         for url in challenger_urls:
+#             # append challangers to list
+#             boxer_urls.append(url)
+        
+#         # boxer count
+#         count = 1
+        
+#         # loop over boxer URLs
+#         for boxer_url in boxer_urls:
+#             # crawl boxer's profile
+#             yield response.follow(
+#                 url=boxer_url,
+#                 headers=self.headers,
+#                 meta={
+#                     'count': count,
+#                     'total': len(boxer_urls)
+#                 },
+#                 callback=self.parse_profile
+#             )
+            
+#             # increment boxer count
+#             count += 1
+        
+#     # parse profile data
+#     def parse_profile(self, response):
+#         '''
+#         # store HTML response locally
+#         with open('profile.html', 'w') as f:
+#             f.write(response.text)
+#         '''
+        
+#         '''
+#         # local HTML content
+#         content = ''
+        
+#         # open local HTML file
+#         with open('profile.html', 'r') as f:
+#             for line in f.read():
+#                 content += line
+        
+#         # init scrapy selector
+#         response = Selector(text=content)
+#         '''
+        
+#         # extract current boxer count
+#         count = response.meta.get('count')
+#         total = response.meta.get('total')
+        
+#         # print debug info
+#         print('\n\nBoxer #%s out of %s total boxers\n\n' % (count, total))
+        
+#         # extract profile feature
+#         features = {
+#             'name': response.css('li[class="hightlight full-record"]')
+#                             .css('h1::text')
+#                             .get(),
+            
+#             'image_url': response.css('div[class="single-fighter"]')
+#                                  .css('img::attr(src)')
+#                                  .get(),
+            
+#             'record': response.css('span[class="record"]::text')
+#                               .get(),
+            
+#             'titles': {
+#                 'IBF': response.css('li[class="ibf-belt belt-row"]::text').get(),
+#                 'WBO': response.css('li[class="wbo-belt belt-row"]::text').get(),
+#                 'WBA': response.css('li[class="wba-belt belt-row"]::text').get()
+#             },
+            
+#             'points_count': [],
+            
+#             'stats': {
+#                 'age': response.css('span[class="f-desc"]::text').getall()[0],
+#                 'height': response.css('span[class="f-desc"]::text').getall()[1],
+#                 'reach': response.css('span[class="f-desc"]::text').getall()[2],
+#                 'stance': response.css('span[class="f-desc"]::text').getall()[3],
+#             },
+            
+#             'full_record': {
+#                 'wins': response.css('span[class="f-desc"]::text').getall()[4],
+#                 'by_ko': response.css('span[class="f-desc"]::text').getall()[5],
+#                 'ko_%': response.css('span[class="f-desc"]::text').getall()[6],
+#                 'lost': response.css('span[class="f-desc"]::text').getall()[7],
+#                 'stopped': response.css('span[class="f-desc"]::text').getall()[8],
+#                 'draws': response.css('span[class="f-desc"]::text').getall()[9],
+#                 'debut': response.css('span[class="f-desc"]::text').getall()[10],
+#                 'pro_rds': response.css('span[class="f-desc"]::text').getall()[11]
+#             },
+            
+#             'ranking': {},
+            
+#             'division': ''.join([
+#                             text.get().split(' @ ')[-1]
+#                             for text in
+#                             response.css('li[class="hightlight full-record"]::text')
+#                             if '@' in text.get()
+#                         ]),
+            
+#             'description': '\n'.join(response.css('div[class="expert-fighter-filters"]')
+#                                              .css('p::text')
+#                                              .getall()),
+            
+#             'odds': [],
+            
+#             'potential_fights': []        
+#         }
+        
+#         # extract ranking
+#         try:
+#             features['ranking'] = {
+#                 'wbo': response.css('span[class="f-desc"]::text').getall()[12],
+#                 'ibf': response.css('span[class="f-desc"]::text').getall()[13],
+#                 'wbc': response.css('span[class="f-desc"]::text').getall()[14],
+#                 'wba': response.css('span[class="f-desc"]::text').getall()[15]
+#             }
+        
+#         except:
+#             pass
+        
+#         # extract points count keys
+#         points_count_keys = list(filter(None, [
+#                                 text.get().replace('\n', '').strip()
+#                                 for text in
+#                                 response.css('span[class="points-count"]')
+#                                         .css('i::text')
+#                                 if text.get() != ' < '
+#                             ]))
+        
+#         # extract points count values
+#         points_count_vals = list(filter(None, [
+#                                 text.get().replace('\n', '').strip()
+#                                 for text in
+#                                 response.css('span[class="points-count"]')
+#                                         .css('i')
+#                                         .css('small::text')
+#                                 if text.get() != ' < '
+#                             ]))
+        
+#         # loop over the range of points count
+#         for index in range(0, len(points_count_vals)):
+#             features['points_count'].append(
+#                 {points_count_keys[index]: points_count_vals[index]}\
+#             )
+        
+#         # extract odds
+#         for table in response.css('table[class="responsive boxing-betting-table"]'):
+#             # extract odds row
+#             odds_row = list(filter(None, [
+#                                 text.get().replace('\n', '').replace(' ', '')
+#                                 for text in
+#                                 table.css('tr').css('span[class="dec odd"] *::text')
+#                             ]))
+            
+#             # extract fighter name
+#             fighter_name = table.css('td[class="fighter_name"]').css('a::text').getall()
+            
+#             features['odds'].append({
+#                 'boxer': {
+#                     'name': fighter_name[0],
+#                     'williamhill': odds_row[0],
+#                     'unibet': odds_row[1],
+#                     'boyle': odds_row[2],
+#                     'ladbrokes': odds_row[3],
+#                     'skybet': odds_row[4],
+#                     'betway': odds_row[5],
+#                     'bwin': odds_row[6],
+#                     'betfred': odds_row[7],
+#                     'winner': odds_row[8]
+#                 },
+                
+#                 'opponent': {
+#                     'name': fighter_name[1],
+#                     'williamhill': odds_row[9],
+#                     'unibet': odds_row[10],
+#                     'boyle': odds_row[11],
+#                     'ladbrokes': odds_row[12],
+#                     'skybet': odds_row[13],
+#                     'betway': odds_row[14],
+#                     'bwin': odds_row[15],
+#                     'betfred': odds_row[16],
+#                     'winner': odds_row[17]
+#                 }
+#             })
+        
+#         # extract potential fights
+#         for fight in response.css('div[class="boxer-area"]')[1:]:
+#             # extract potential date
+#             try:
+#                 potential_date = fight.css('span[class="date potenclash"]::text').get()
+#                 potential_date = potential_date.strip('\n').split(' : ')[-1]
+            
+#             except:
+#                 potential_date = 'N/A'
+        
+#             features['potential_fights'].append({
+#                 'opponent_name': fight.css('div[class="right"]')
+#                                       .css('a::attr(title)')
+#                                       .get(),
+                
+#                 'opponent_image_url': fight.css('div[class="right"]')
+#                                            .css('img::attr(src)')
+#                                            .get(),
+                
+#                 'opponent_record': fight.css('span.record-r *::text')
+#                                         .get()
+#                                         .strip('\n'),
+                
+#                 'potential_date': potential_date,
+                
+#                 'title_belts': {
+#                     'wbc': fight.css('li[class="wbc-belt belt-row"]::text')
+#                                 .get(),
+                    
+#                     'ibf': fight.css('li[class="ibf-belt belt-row"]::text')
+#                                 .get(),
+                    
+#                     'wba': fight.css('li[class="wba-belt belt-row"]::text')
+#                                 .get(),
+
+#                     'wbo': fight.css('li[class="wbo-belt belt-row"]::text')
+#                                 .get(),
+#                 }
+#             })
+        
+#         # print resulting dataset
+#         #print(json.dumps(features, indent=2))
+        
+#         # write features to file
+#         with open('boxers.jsonl', 'a') as f:
+#             f.write(json.dumps(features, indent=2) + '\n')
+        
+# # main driver
+# if __name__ == '__main__':
+#     # run scraper
+#     process = CrawlerProcess()
+#     process.crawl(BoxerRankings)
+#     process.start()
+    
+#     # debug data extraction logic
+#     #BoxerRankings.parse_profile(BoxerRankings, '')
+
+{% comment %} From Boxer.py {% endcomment %}
+{% comment %} From Exection.py {% endcomment %}
+# File "<stdin>", line 1
+#     while True print('Hello world')
+# Traceback (most recent call last):
+#   File "<stdin>", line 1, in <module>
+
+# ==========================================================
+# try:
+#      x = int(input("Please enter a number: "))
+#      pass
+# except Exception as e:
+#      print(e)
+# ======> Hasil
+# invalid literal for int() with base 10: 'f'
+# except ValueError:
+     # print("Oops!  That was no valid number.  Try again...")
+# ======> Hasil
+# when error while print Oops!  That was no valid number.  Try again...
+# ==========================================================
+
+# ==========================================================
+# import sys
+
+# try:
+#     f = open('myfile.txt')
+#     s = f.readline()
+#     i = int(s.strip())
+# except OSError as err: # print the bellow when file not found
+#     print("OS error: {0}".format(err))
+# except ValueError: # print the bellow when the value is not correct
+#     print("Could not convert data to an integer.")
+# except: # print the bellow for the general exception
+#     print("Unexpected error:", sys.exc_info()[0])
+#     raise
+# ==========================================================
+
+# ==========================================================
+# import sys
+
+# try:
+#     f = open('myfile.txt')
+#     s = f.readline()
+#     i = int(s.strip())
+# except OSError as err:
+#     print("OS error: {0}".format(err))
+# except ValueError:
+#     print("Could not convert data to an integer.")
+# except:
+#     print("Unexpected error:", sys.exc_info()[0])
+#     raise
+
+# for arg in sys.argv[1:]:
+#      try:
+#           f = open(arg, 'r')
+#      except OSError:
+#           print('cannot open', arg)
+#      else:
+#           print(arg, 'has', len(f.readlines()), 'lines')
+#           f.close()
+# ==========================================================
+
+# ==========================================================
+# import logging.config
+# import traceback
+
+# logging.config.fileConfig('logging.ini', disable_existing_loggers=False)
+# logger = logging.getLogger(__name__)
+
+# def word_count(myfile):
+#     try:
+#         # count the number of words in a file, myfile, and log the result
+#         with open(myfile, 'r+') as f:
+#             file_data = f.read()
+#             words = file_data.split(" ")
+#             final_word_count = len(words)
+#             logger.info("this file has %d words", final_word_count)
+#             f.write("this file has %d words", final_word_count)
+#             return final_word_count
+#     except OSError as e:
+#         logger.error(e, exc_info=True)
+#     except:
+#         logger.error("uncaught exception: %s", traceback.format_exc())
+#         return False
+
+# if __name__ == '__main__':
+#     word_count('myfile.txt')
+{% comment %} From Exection.py {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
